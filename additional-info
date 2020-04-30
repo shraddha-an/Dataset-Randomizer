@@ -4,6 +4,7 @@ This is a Web Scraping Project implemented in Python using the Beautiful Soup li
 I access the UCI Machine Learning Repository and view all the available datasets in list format.
 
 The URL I used to scrape: 
+https://archive.ics.uci.edu/ml/datasets.php?format=&task=&att=&area=&numAtt=&numIns=&type=&sort=nameUp&view=list
 
 I parse the names of the datasets and their links into a dataframe. 
 Then using the randint method in numpy.random module, I generate a random number as index to access the link.
