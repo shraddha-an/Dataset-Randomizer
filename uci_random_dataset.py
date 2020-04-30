@@ -21,10 +21,9 @@ job_list = soup.find_all('p', class_ = 'normal')
 listing = []
 
 for job in job_list:
-    #print(job, '\n')
     listing.append(job.text)
 
-# Remove those elemnts that are not datasets
+# Remove those links that do not point to datasets
 listing = listing[8:505]
 
 # Extracting links
@@ -42,7 +41,7 @@ link_list = pd.DataFrame(link_list, columns = ['Links'])
 listing = pd.DataFrame(listing, columns = ['Name'])
 dataset_list = pd.concat((listing, link_list), axis = 1)
 
-# Generate a random number b/ 0 & 496 & o/p a link based on this
+# Generate a random number between 0 & 496 for the 497 datasets present & store the link as a string
 rn = np.random.randint(0, 496)
 random_link = (dataset_list['Links'][rn])
 
