@@ -16,12 +16,12 @@ response = requests.get(url, headers = agent)
 # Parsing the HTML
 soup = bs(response.text, 'html.parser')
 
-# Saving the names of all the datasets in a list
-job_list = soup.find_all('p', class_ = 'normal')
+# Saving the names of all the datasets in a list; the links are embedded within the p tags belonging to the class 'normal'
+ptag_list = soup.find_all('p', class_ = 'normal')
 listing = []
 
-for job in job_list:
-    listing.append(job.text)
+for link_title in ptag_list:
+    listing.append(link_title.text)
 
 # Remove those links that do not point to datasets
 listing = listing[8:505]
@@ -29,8 +29,8 @@ listing = listing[8:505]
 # Extracting links
 link_list = []
 
-for job in  soup.find_all('a', href = True):
-    k = 'https://archive.ics.uci.edu/ml' + '/' + job['href']
+for link in  soup.find_all('a', href = True):
+    k = 'https://archive.ics.uci.edu/ml' + '/' + link['href']
     link_list.append(k)
 
 # Removing links which are not pointing to any dataset
